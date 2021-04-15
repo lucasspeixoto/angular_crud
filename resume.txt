@@ -1,0 +1,66 @@
+-> O JSON Server lê um arquivo json e cria uma API baseado nesse arquivo.
+-> O Angular frequentemente utiliza o cli do angular, que vai auxiliar em 
+diversas etapas do projeto, entre elas a criação do projeto.
+
+npm i -g @angular/cli
+ng new frontend --minimal
+
+-> Dentro de um html de determinado componente conseguimos interpolar uma variável
+-> Para criar um componente, podemos usar o comando ng generate component components/template/header
+Onde 'components/template/header' é o caminho de criação desse componente. 
+Ao criarmos esse componente (header), o mesmo ja é chamado dentro do nosso app.module.ts e dentro de header,
+toda a estrutura desse componente ja é criada.
+-> com o componente header criado, ja podemos chama-lo dentro do nosso app.component.html
+Ex:
+  <app-header></app-header>
+Para iniciarmos a montagem do componente header, precisamos importar a toolbar do material, onde vai
+ser necessário importar outro módulo, onde dentro dele, temos um componente
+Ex:
+  -> Em frontend/src/app/app.module.ts:
+    import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/template/header/header.component';
+
+//Módulo para criação do componente Header
+import { MatToolbarModule } from '@angular/material/toolbar'
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+Todo módulo que será utilizado dentro de outro precisamos referencia-lo em 'imports'.
+Agora esse módulo está pronto pra ser utilizado em header.component.html
+Ex:
+-> Em 'src\app\app.component.html':
+<mat-toolbar class="header mat-elevation-z4">
+  <span>
+    <a>
+      <img class="logo" src="assets/img/logo.png" alt="logo">
+    </a>
+  </span>
+  <span class="title-group">
+    <a>
+      <i class="material-icons">
+        home
+      </i>
+      Aplicação CRUD
+    </a>
+
+  </span>
+</mat-toolbar>
