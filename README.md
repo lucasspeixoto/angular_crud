@@ -7,3 +7,4 @@
 ## Instalação de ferramentas
 * Node: https://nodejs.org/dist/v14.16.1/node-v14.16.1-x64.msi
 * JSON-Server: npm i json-server
+* Angular/CLI: npm i -g @angular/cli
