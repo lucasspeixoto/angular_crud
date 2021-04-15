@@ -1,0 +1,20 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient( #3f51b5, #6b76b3);
+  display: flex;
+  justify-content: center;
+}
+
+.footer > span {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.texto {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: smaller;
+  color: #fff;
+}

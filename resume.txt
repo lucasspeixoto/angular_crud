@@ -64,3 +64,5 @@ Ex:
 
   </span>
 </mat-toolbar>
+
+-> Em frontend\src\styles.css vamos colocar classes para serem utilizadas de forma global em nossa aplicação
