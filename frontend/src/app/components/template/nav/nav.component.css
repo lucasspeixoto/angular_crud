@@ -9,5 +9,9 @@
 
 .sidenav i {
   padding-right: 25px;
+}
 
+.content {
+  padding: 16px;
+  background-color: #fff;
 }
