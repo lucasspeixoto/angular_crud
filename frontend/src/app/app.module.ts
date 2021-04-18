@@ -30,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
-import { ToNumberDirective } from './directives/to-number.directive'
+import { ToNumberDirective } from './directives/to-number.directive';
+import { ProductReadComponent } from './components/product/product-read/product-read.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { ToNumberDirective } from './directives/to-number.directive'
     RedDirective,
     ForDirective,
     ProductCreateComponent,
-    ToNumberDirective
+    ToNumberDirective,
+    ProductReadComponent
   ],
   imports: [
     BrowserModule,

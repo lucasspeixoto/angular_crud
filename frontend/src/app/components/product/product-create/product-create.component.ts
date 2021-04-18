@@ -26,13 +26,13 @@ export class ProductCreateComponent implements OnInit {
   }
 
   createProduct(): void {
-    /*Setando tipagem
+    //Setando tipagem
     this.product = {
       name: this.product.name,
       price: Number(this.product.price),
       storage: Number(this.product.storage),
     }
-    */
+
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage(`${this.product.name} Inserido.`)
       /*Ao iniciar o componente ProductCreateComponent,
