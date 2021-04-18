@@ -1,3 +1,4 @@
+import { HeaderService } from './../../components/template/header/header.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router'
@@ -9,7 +10,16 @@ import { Router } from '@angular/router'
 })
 export class ProductCrudComponent implements OnInit {
 
-  constructor(private router: Router) { }  /*com o privater router, no construtor, o Angular vai instanciar
+  constructor(
+    private router: Router,
+    private headerService: HeaderService
+    ) {
+    headerService.headerData = {
+      title: 'Cadastro de Produtos',
+      icon: 'storefront',
+      routeUrl: '/products'
+    }
+   }  /*com o privater router, no construtor, o Angular vai instanciar
   um router na nossa classe, ai poderemos utilizar o metodo navigate para navegar.
   Em outras palavras, o Angular vai injetar o Router que importamos dentro da classe */
 
