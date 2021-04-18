@@ -1,3 +1,4 @@
+import { Product } from './../product.model';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
@@ -10,19 +11,26 @@ import { Router } from '@angular/router'
 
 export class ProductCreateComponent implements OnInit {
 
+  product: Product = {
+    name: '',
+    price: undefined
+  }
+
   constructor(
     private productService: ProductService,
     private router: Router
   ) { } //Injetando o service ProductService
 
   ngOnInit(): void {
-
   }
 
   createProduct(): void {
-    this.productService.showMessage('Testando Injeção do service')
-    /*Ao iniciar o componente ProductCreateComponent,
-    a função showOnConsole vai ser chamada */
+    this.productService.create(this.product).subscribe(() => {
+      this.productService.showMessage(`${this.product.name} Inserido.`)
+      /*Ao iniciar o componente ProductCreateComponent,
+      a função showOnConsole vai ser chamada */
+      this.router.navigate(['/products'])
+    }) //O método subscribe vai notificar quando a resposta chegar
   }
   cancel(): void {
     this.router.navigate(['/products'])
