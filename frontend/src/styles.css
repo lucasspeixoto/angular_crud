@@ -4,9 +4,16 @@ html, body { height: 100%; }
 body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
 .red {
-  color: rgb(227, 97,107)
+  color: #e3616b
 }
 
 .v-middle {
   vertical-align: middle;
+}
+
+.msg-success {
+  background-color: #28a745;
+}
+.msg-error {
+  background-color: #e3616b;
 }

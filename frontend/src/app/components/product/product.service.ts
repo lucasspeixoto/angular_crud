@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -7,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from './product.model';
 import { Observable, EMPTY } from "rxjs";
 import { ThrowStmt } from '@angular/compiler';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root' /* Esse root significa que o service é um
@@ -24,28 +23,39 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  showMessage(msg: string): void {
+  showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,
       horizontalPosition: 'right',
-      verticalPosition: 'top'
+      verticalPosition: 'top',
+      panelClass: isError ? ['msg-error'] : ['msg-success']
     })
   }
 
   //Para inserir no backend o nosso produto
   create(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl, product)
+    return this.http.post<Product>(this.baseUrl, product).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+      //Apenas catchError(this.errorHandler) vai causar erro na chamada por conta da referência do this
+    )
   }
 
   //Para leitura dos produtos
   read(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl)
+    return this.http.get<Product[]>(this.baseUrl).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
   }
 
   //Para Obter o id da rota atual (Referência para alteração e exclusão)
   readById(id: string): Observable<Product> {
     const url = `${this.baseUrl}/${id}`
-    return this.http.get<Product>(url) //Nesse retorno teremos um observable de produtos, quando a resposta chegar do backend, a função vai ser chamada
+    return this.http.get<Product>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
   }
 
   //Para alteração dos dados no banco de dados
@@ -56,7 +66,15 @@ export class ProductService {
 
   delete(product: Product): Observable<Product> {
     const url = `${this.baseUrl}/${product.id}`
-    return this.http.delete<Product>(url)
+    return this.http.delete<Product>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
+  errorHandler(e: any): Observable<any> {
+    this.showMessage('Ocorreu um erro', true)
+    return EMPTY
   }
 
 }
