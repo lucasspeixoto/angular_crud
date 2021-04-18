@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product.model';
 import { Observable, EMPTY } from "rxjs";
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root' /* Esse root significa que o service é um
@@ -39,6 +40,16 @@ export class ProductService {
   //Para leitura dos produtos
   read(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl)
+  }
+
+  readById(id: string): Observable<Product> {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<Product>(url) //Nesse retorno teremos um observable de produtos, quando a resposta chegar do backend, a função vai ser chamada
+  }
+
+  update(product: Product): Observable<Product> {
+    const url = `${this.baseUrl}/${product.id}`
+    return this.http.put<Product>(url, product)
   }
 
 }
