@@ -21,7 +21,7 @@
     <!-- Storage Column -->
     <ng-container matColumnDef="storage">
       <th mat-header-cell *matHeaderCellDef>Quantidade</th>
-      <td mat-cell *matCellDef="let row">{{row.storage}}</td>
+      <td mat-cell *matCellDef="let row" type="number">{{row.storage}}</td>
     </ng-container>
 
      <!-- Action Column -->
@@ -33,7 +33,7 @@
             mode_edit
           </i>
         </a>
-        <a routerLink="" class="delete">
+        <a routerLink="/products/delete/{{ row.id }}" class="delete">
           <i class="material-icons">
             delete
           </i>

@@ -33,7 +33,7 @@ export class ProductService {
   }
 
   //Para inserir no backend o nosso produto
-  create(product: Product): Observable <Product> {
+  create(product: Product): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, product)
   }
 
@@ -42,14 +42,21 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseUrl)
   }
 
+  //Para Obter o id da rota atual (Referência para alteração e exclusão)
   readById(id: string): Observable<Product> {
     const url = `${this.baseUrl}/${id}`
     return this.http.get<Product>(url) //Nesse retorno teremos um observable de produtos, quando a resposta chegar do backend, a função vai ser chamada
   }
 
+  //Para alteração dos dados no banco de dados
   update(product: Product): Observable<Product> {
     const url = `${this.baseUrl}/${product.id}`
     return this.http.put<Product>(url, product)
+  }
+
+  delete(product: Product): Observable<Product> {
+    const url = `${this.baseUrl}/${product.id}`
+    return this.http.delete<Product>(url)
   }
 
 }
