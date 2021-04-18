@@ -13,7 +13,8 @@ export class ProductCreateComponent implements OnInit {
 
   product: Product = {
     name: '',
-    price: undefined
+    price: null!,
+    storage: null!
   }
 
   constructor(
@@ -25,6 +26,13 @@ export class ProductCreateComponent implements OnInit {
   }
 
   createProduct(): void {
+    /*Setando tipagem
+    this.product = {
+      name: this.product.name,
+      price: Number(this.product.price),
+      storage: Number(this.product.storage),
+    }
+    */
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage(`${this.product.name} Inserido.`)
       /*Ao iniciar o componente ProductCreateComponent,
@@ -32,11 +40,11 @@ export class ProductCreateComponent implements OnInit {
       this.router.navigate(['/products'])
     }) //O método subscribe vai notificar quando a resposta chegar
   }
+
   cancel(): void {
     this.router.navigate(['/products'])
     /*Ao iniciar o componente ProductCreateComponent,
     a função showOnConsole vai ser chamada */
   }
-
 
 }

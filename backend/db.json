@@ -3,27 +3,32 @@
     {
       "id": 1,
       "name": "LG K22+",
-      "price": 799
+      "price": 799,
+      "storage": 1526
     },
     {
       "id": 2,
       "name": "Xiaomi Redmi 9",
-      "price": 1069
+      "price": 1069,
+      "storage": 1458
     },
     {
       "id": 3,
       "name": "Samsung Galaxy A12",
-      "price": 1349
+      "price": 1349,
+      "storage": 899
     },
     {
       "id": 4,
       "name": "iPhone 12 Pro",
-      "price": 8559
+      "price": 8559,
+      "storage": 1025
     },
     {
       "id": 5,
       "name": "Moto G8 Power Lite",
-      "price": 1199
+      "price": 1199,
+      "storage": 1232
     }
   ]
 }
