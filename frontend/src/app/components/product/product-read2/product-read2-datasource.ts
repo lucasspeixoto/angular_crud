@@ -1,25 +1,38 @@
+import { Product } from './../product.model';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
-import { Product } from './../product.model';
-
-/* // TODO: Replace this with your own data model type
-export interface Product {
+// TODO: Replace this with your own data model type
+export interface ProductRead2Item {
   name: string;
   id: number;
 }
-*/
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: Product[] = [
-  { id: 1, name: 'LG K22+', price: 799, storage: 1526 },
-  { id: 2, name: 'Xiaomi Redmi 9', price: 1069, storage: 1458 },
-  { id: 3, name: 'Samsung Galaxy A12', price: 1349, storage: 899 },
-  { id: 4, name: 'iPhone 12 Pro', price: 8559, storage: 1025 },
-  { id: 5, name: 'Moto G8 Power Lite', price: 1199, storage: 1232 }
 
+// TODO: replace this with real data from your application
+const EXAMPLE_DATA: ProductRead2Item[] = [
+  {id: 1, name: 'Hydrogen'},
+  {id: 2, name: 'Helium'},
+  {id: 3, name: 'Lithium'},
+  {id: 4, name: 'Beryllium'},
+  {id: 5, name: 'Boron'},
+  {id: 6, name: 'Carbon'},
+  {id: 7, name: 'Nitrogen'},
+  {id: 8, name: 'Oxygen'},
+  {id: 9, name: 'Fluorine'},
+  {id: 10, name: 'Neon'},
+  {id: 11, name: 'Sodium'},
+  {id: 12, name: 'Magnesium'},
+  {id: 13, name: 'Aluminum'},
+  {id: 14, name: 'Silicon'},
+  {id: 15, name: 'Phosphorus'},
+  {id: 16, name: 'Sulfur'},
+  {id: 17, name: 'Chlorine'},
+  {id: 18, name: 'Argon'},
+  {id: 19, name: 'Potassium'},
+  {id: 20, name: 'Calcium'},
 ];
 
 /**
@@ -27,17 +40,16 @@ const EXAMPLE_DATA: Product[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-
-/* Trazer todo Backend e paginar no front ?? */
-
 export class ProductRead2DataSource extends DataSource<Product> {
-  data: Product[] = EXAMPLE_DATA;
-  paginator: MatPaginator | undefined;
-  sort: MatSort | undefined;
+  data: Product[] = []
+  paginator!: MatPaginator
+  sort!: MatSort
 
   constructor() {
     super();
   }
+
+
 
   /**
    * Connect this data source to the table. The table will only update when
@@ -50,7 +62,7 @@ export class ProductRead2DataSource extends DataSource<Product> {
       // stream for the data-table to consume.
       return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data]));
+          return this.getPagedData(this.getSortedData([...this.data ]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -61,7 +73,7 @@ export class ProductRead2DataSource extends DataSource<Product> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void { }
+  disconnect(): void {}
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -90,8 +102,6 @@ export class ProductRead2DataSource extends DataSource<Product> {
       switch (this.sort?.active) {
         case 'name': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+!a.id, +!b.id, isAsc);
-        case 'price': return compare(+!a.price, +!b.price, isAsc);
-        case 'storage': return compare(+!a.storage, +!b.storage, isAsc);
         default: return 0;
       }
     });

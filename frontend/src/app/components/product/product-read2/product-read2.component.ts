@@ -1,5 +1,6 @@
 import { Product } from './../product.model';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { ProductService } from './../product.service';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -10,27 +11,35 @@ import { ProductRead2DataSource } from './product-read2-datasource';
   templateUrl: './product-read2.component.html',
   styleUrls: ['./product-read2.component.css']
 })
-export class ProductRead2Component implements AfterViewInit {
+export class ProductRead2Component implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Product>;
-  dataSource: ProductRead2DataSource;
-
-  /* Aqui, os componentes MatPaginator e Matsort,  são obtidos
-  diretamente do html, através do decorator ViewChild, que vai
-  percorrer o template e atribuir às variáveis paginator e sort,
-  os componentes MatPaginator e Matsort*/
+  dataSource!: ProductRead2DataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'price', 'storage'];
+  displayedColumns = ['id', 'name'];
 
-  constructor() {
+  constructor(private productService: ProductService) { }
+
+  ngOnInit(): void {
     this.dataSource = new ProductRead2DataSource();
+
   }
 
   ngAfterViewInit(): void {
+
+    this.productService.read().subscribe(product => {
+      console.log("product dentro do subscribe ", product)
+      this.dataSource.data = product
+
+      console.log("this.dataSource.data dentro subscribe", this.dataSource.data)
+      return this.dataSource.data
+    })
+    console.log("this.dataSource.data fora subscribe", this.dataSource.data)
+    console.log("this.dataSource fora subscribe", this.dataSource)
+
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
   }
 }

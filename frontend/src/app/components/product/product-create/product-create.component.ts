@@ -27,11 +27,11 @@ export class ProductCreateComponent implements OnInit {
 
   createProduct(): void {
     //Setando tipagem
-    this.product = {
+    /* this.product = {
       name: this.product.name,
       price: Number(this.product.price),
       storage: Number(this.product.storage),
-    }
+    } */
 
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage(`${this.product.name} Inserido.`)
