@@ -1,4 +1,4 @@
-<div class="mat-elevation-z6">
+<div class="mat-elevation-z8">
   <!-- Filter input -->
   <div fxLayout fxLayoutAlign="right">
     <mat-form-field fxFlex="10%">
@@ -40,6 +40,7 @@
             mode_edit
           </i>
         </a>
+
         <a routerLink="/products/delete/{{ row.id }}" class="delete">
           <i class="material-icons">
             delete
@@ -52,6 +53,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  <mat-paginator [pageSize]="15" [pageSizeOptions]="[5, 10, 20]">
   </mat-paginator>
 </div>

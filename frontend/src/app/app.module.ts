@@ -34,6 +34,7 @@ import { HomeComponent } from './views/home/home.component';
 import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 import { ProductRead2Component } from './components/product/product-read2/product-read2.component';
 import { ProductRead3Component } from './components/product/product-read3/product-read3.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 registerLocaleData(localePt)
 @NgModule({
@@ -70,7 +71,8 @@ registerLocaleData(localePt)
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
 
   ],
   providers: [{
@@ -78,6 +80,7 @@ registerLocaleData(localePt)
     useValue: 'pt-BR'
   }],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  //entryComponents: [ProductCreateComponent]
 })
 export class AppModule { }

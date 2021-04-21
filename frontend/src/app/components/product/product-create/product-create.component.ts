@@ -2,7 +2,7 @@ import { Product } from './../product.model';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
-
+import { MatDialogRef } from '@angular/material/dialog'
 @Component({
   selector: 'app-product-create',
   templateUrl: './product-create.component.html',
@@ -19,32 +19,29 @@ export class ProductCreateComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private router: Router
-  ) { } //Injetando o service ProductService
+    private router: Router,
+    private dialogRef: MatDialogRef<ProductCreateComponent>
+  ) { }
 
   ngOnInit(): void {
   }
 
   createProduct(): void {
-    //Setando tipagem
-    /* this.product = {
-      name: this.product.name,
-      price: Number(this.product.price),
-      storage: Number(this.product.storage),
-    } */
-
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage(`${this.product.name} Inserido.`)
-      /*Ao iniciar o componente ProductCreateComponent,
-      a função showOnConsole vai ser chamada */
-      this.router.navigate(['/products'])
-    }) //O método subscribe vai notificar quando a resposta chegar
+      this.afterCreate()
+    })
+  }
+
+  afterCreate(): void {
+    this.dialogRef.close()
+    this.router.navigate(['/products'])
+
   }
 
   cancel(): void {
+    this.dialogRef.close()
     this.router.navigate(['/products'])
-    /*Ao iniciar o componente ProductCreateComponent,
-    a função showOnConsole vai ser chamada */
   }
 
 }

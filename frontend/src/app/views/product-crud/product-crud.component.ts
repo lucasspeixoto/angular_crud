@@ -1,7 +1,10 @@
+
 import { HeaderService } from './../../components/template/header/header.service';
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router'
+
+import { MatDialog, MatDialogConfig} from '@angular/material/dialog'
+import { ProductCreateComponent } from './../../components/product/product-create/product-create.component';
 
 @Component({
   selector: 'app-product-crud',
@@ -11,8 +14,8 @@ import { Router } from '@angular/router'
 export class ProductCrudComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private dialog: MatDialog
     ) {
     this.headerService.headerData = {
       title: 'Cadastro de Produtos',
@@ -28,6 +31,11 @@ export class ProductCrudComponent implements OnInit {
   }
 
   navigateToProductCreate(): void {
-    this.router.navigate(['/products/create'])
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.dialog.open(ProductCreateComponent, dialogConfig)
+    //this.router.navigate(['/products/create'])
   }
 }

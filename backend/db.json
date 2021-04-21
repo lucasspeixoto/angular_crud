@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "LG K22+",
-      "price": 899,
+      "price": 789,
       "storage": 1052
     },
     {
@@ -59,6 +59,12 @@
       "price": 3019,
       "storage": 155,
       "id": 11
+    },
+    {
+      "name": "Teste",
+      "price": 31,
+      "storage": 2,
+      "id": 12
     }
   ]
 }
