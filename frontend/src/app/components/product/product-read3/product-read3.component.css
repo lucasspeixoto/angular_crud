@@ -13,3 +13,7 @@ table {
 .delete > i {
   color: #e35e6b
 }
+
+input {
+  margin-left: 15px;
+}

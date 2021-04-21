@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "LG K22+",
-      "price": 1000,
+      "price": 899,
       "storage": 1052
     },
     {
@@ -27,8 +27,38 @@
     {
       "id": 5,
       "name": "Moto G8 Power Lite",
-      "price": 1199,
+      "price": 999,
       "storage": 1232
+    },
+    {
+      "name": "iPhone 6",
+      "price": 800,
+      "storage": 12,
+      "id": 7
+    },
+    {
+      "name": "Galaxy A01 Core",
+      "price": 599,
+      "storage": 59,
+      "id": 8
+    },
+    {
+      "name": "Samsung Galaxy M31",
+      "price": 1799,
+      "storage": 145,
+      "id": 9
+    },
+    {
+      "name": "ASUS ZenFone 7 Qualcomm Snapdragon",
+      "price": 5099.15,
+      "storage": 131,
+      "id": 10
+    },
+    {
+      "name": "iPhone SE Apple (128GB)",
+      "price": 3019,
+      "storage": 155,
+      "id": 11
     }
   ]
 }

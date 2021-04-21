@@ -1,4 +1,11 @@
 <div class="mat-elevation-z6">
+  <!-- Filter input -->
+  <div fxLayout fxLayoutAlign="right">
+    <mat-form-field fxFlex="10%">
+      <input (keyup)="applyFilter($any($event.target).value)" type="text" placeholder="Filtro" matInput>
+    </mat-form-field>
+  </div>
+
   <table mat-table [dataSource]="dataSource" matSort>
     <!-- Id Column -->
     <ng-container matColumnDef="id">
@@ -45,6 +52,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-  <mat-paginator [pageSize]="4" [pageSizeOptions]="[2, 4, 6, 10, 20]">
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
   </mat-paginator>
 </div>

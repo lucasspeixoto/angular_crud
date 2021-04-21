@@ -35,7 +35,6 @@ import { ProductCrudComponent } from './views/product-crud/product-crud.componen
 import { ProductRead2Component } from './components/product/product-read2/product-read2.component';
 import { ProductRead3Component } from './components/product/product-read3/product-read3.component';
 
-
 registerLocaleData(localePt)
 @NgModule({
   declarations: [
@@ -72,6 +71,7 @@ registerLocaleData(localePt)
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
+
   ],
   providers: [{
     provide: LOCALE_ID,
