@@ -3,13 +3,13 @@
     {
       "id": 1,
       "name": "LG K22+",
-      "price": 789,
-      "storage": 1052
+      "price": 1019,
+      "storage": 850
     },
     {
       "id": 2,
       "name": "Xiaomi Redmi 9",
-      "price": 999,
+      "price": 1059,
       "storage": 1458
     },
     {
@@ -61,10 +61,22 @@
       "id": 11
     },
     {
-      "name": "Teste",
-      "price": 31,
-      "storage": 2,
+      "name": "Nokia Quadradão Azul",
+      "price": 85,
+      "storage": 13,
       "id": 12
+    },
+    {
+      "name": "Nokia Quadradão Vermelho",
+      "price": 85,
+      "storage": 4,
+      "id": 13
+    },
+    {
+      "name": "teste",
+      "price": 131,
+      "storage": 2,
+      "id": 14
     }
   ]
 }

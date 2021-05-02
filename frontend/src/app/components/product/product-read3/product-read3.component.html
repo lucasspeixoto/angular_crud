@@ -2,7 +2,7 @@
   <!-- Filter input -->
   <div fxLayout fxLayoutAlign="right">
     <mat-form-field fxFlex="10%">
-      <input (keyup)="applyFilter($any($event.target).value)" type="text" placeholder="Filtro" matInput>
+      <input (keyup)="applyFilter(campoInput.value)" type="text" placeholder="Filtro" #campoInput matInput>
     </mat-form-field>
   </div>
 
@@ -35,17 +35,21 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Ações</th>
       <td mat-cell *matCellDef="let row">
+
+        <!-- Edit -->
         <a routerLink="/products/update/{{ row.id }}" class="edit">
           <i class="material-icons">
             mode_edit
           </i>
         </a>
 
+        <!-- Delete -->
         <a routerLink="/products/delete/{{ row.id }}" class="delete">
           <i class="material-icons">
             delete
           </i>
         </a>
+
       </td>
     </ng-container>
 
@@ -53,6 +57,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-  <mat-paginator [pageSize]="15" [pageSizeOptions]="[5, 10, 20]">
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10]">
   </mat-paginator>
 </div>

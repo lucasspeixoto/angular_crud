@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-product-read3',
   templateUrl: './product-read3.component.html',
@@ -14,13 +15,16 @@ export class ProductRead3Component implements OnInit, AfterViewInit {
 
   products!: Product[]
 
+
   public displayedColumns = ['id', 'name', 'price', 'storage', 'action']
   public dataSource = new MatTableDataSource<Product>();
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+  ) { }
 
   ngOnInit(): void {
     this.productService.read().subscribe(products => {
@@ -34,7 +38,9 @@ export class ProductRead3Component implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator
   }
 
-  applyFilter(filterValue: string) {
+  applyFilter(filterValue: any) {
     this.dataSource.filter = filterValue.trim().toLocaleLowerCase()
+
   }
+
 }
